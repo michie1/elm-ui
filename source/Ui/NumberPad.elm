@@ -28,8 +28,11 @@ import Html.Events exposing (onClick)
 import Html exposing (node, text)
 import Html.Lazy
 
+
 import Numeral
 import String
+
+import Languages.German
 
 import Ui.Helpers.Emitter as Emitter
 import Ui.Native.Uid as Uid
@@ -182,7 +185,8 @@ render ({ address } as viewModel) model =
   let
     value =
       if model.format then
-        Numeral.format "0,0" (toFloat model.value)
+        Numeral.formatWithLang German.lang "$0,0.00" (toFloat model.value)
+        --Numeral.format "$0,0" (toFloat model.value)
       else
         toString model.value
 
